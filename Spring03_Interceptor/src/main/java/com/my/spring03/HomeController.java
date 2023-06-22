@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 	
+	@RequestMapping("/play")
+	public String play() {
+		// /WEB-INF/views/play.jsp
+		return "play";
+	}
+	
 	//이 프로젝트의 최상위 경로 요청이 오면 
 	@RequestMapping("/")
 	public String home(HttpServletRequest request) {
