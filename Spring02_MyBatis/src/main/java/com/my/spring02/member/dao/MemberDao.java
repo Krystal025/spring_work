@@ -7,7 +7,7 @@ import com.my.spring02.member.dto.MemberDto;
 public interface MemberDao {
 	public void insert(MemberDto dto);
 	public void update(MemberDto dto);
-	public void delete(int num);
+	public void delete(MemberDto dto);
 	public MemberDto getData(int num);
 	public List<MemberDto> getList();
 }
