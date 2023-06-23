@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/file/insertform.jsp</title>
+<style>
+	#profileForm{
+		display: none;
+	}
+	#profileLink img{
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+		border-radius: 50%;
+	}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -16,6 +27,87 @@
 			첨부파일 <input type="file" name="myFile" /><br />
 			<button type="submit">업로드</button>	
 		</form>
+		
+		<h3>파일 업로드 폼2</h3>
+		<form action="${pageContext.request.contextPath }/file/upload2" method="post"
+			enctype="multipart/form-data">
+			제목<input type="text" name="title" /><br />
+			첨부파일 <input type="file" name="myFile" /><br />
+			<button type="submit">업로드</button>	
+		</form>
+		
+		<!-- 이미지를 선택해서 업로드 버튼을 누르면 페이지 전환없이 이미지를 업로드하고
+			  업로드된 파일의 정보를 응답 (json) 받아서 id가 imageWrapper인
+			 div의 자식요소에 img요소를 추가해서 업로드된 이미지가 보이도록 프로그래밍 
+			 
+			 - webapp/resources/upload 폴더에 이미지를 저장
+			 - my_util.js를 webapp.resources/js 폴더에 넣어놓고 로딩에서 사용
+			 - /image/upload 요청처리는 FileController에서 시행 -->
+		
+		<h3>이미지 업로드 폼</h3>
+		<form action="${pageContext.request.contextPath }/image/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+			이미지 <input type="file" name="image" accept=".jpg, .jpeg, .gif, .png, .JPG, .JPEG, .PNG"/>
+			<button type="submit">업로드</button>
+		</form>
+		<br />
+		<div id="imageWrapper"></div>
+		<div>
+			<a id="profileLink" href="javascript:">
+				프로필
+			</a>
+		</div>
+		<form action="${pageContext.request.contextPath }/image/upload" method="post" enctype="multipart/form-data" id="profileForm">
+			이미지 <input id="file" type="file" name="image" accept=".jpg, .jpeg, .gif, .png, .JPG, .JPEG, .PNG"/>
+		</form>
+		<script src="${pageContext.request.contextPath }/resources/js/my_util.js"></script>
+		<script>
+			document.querySelector("#profileLink").addEventListener("click",()=>{
+				//input type="file"을 강제 클릭해서 파일선택창 띄우기
+				document.querySelector("#file").click();
+				
+			});
+			//실제로 파일을 선택했을때 (change 이벤트가 발생함) 실행할 함수등록
+			document.querySelector("#file").addEventListener("change",()=>{
+				//폼에 입력한(선택한) 내용을 ajax로 제출하기 
+				const form = document.querySelector("#profileForm");
+				ajaxFormPromise(form)
+				.then(res=>res.json())
+				.then((data)=>{
+					const imgString = `<img src="${pageContext.request.contextPath }\${data.imagePath}">`;
+					document.querySelector("#profileLink").innerHTML = imgString;
+				});
+			})
+			
+		
+			document.querySelector("#uploadForm").addEventListener("submit",(e)=>{
+				//폼 전송을 막음
+				e.preventDefault();
+				/*
+				//my_util.jsp에 있는 함수를 호출하면서 폼 참조값 전달 
+				ajaxFormPromise(e.target)
+				.then(res=>res.json())
+				.then(data=>{
+					
+				});
+				*/
+				//만일 my_util을 사용하지 않는다면 
+				//서버에 전송할 data를 구성 
+				let data = new FormData(e.target);
+				fetch("${pageContext.request.contextPath }/image/upload",{
+					method:"post",
+					body:data
+				})
+				.then(res=>res.json())
+				.then(data=>{
+					console.log(data);
+					//data는 {imagePath:"/resources/upload/xxx"}형식의 object임
+					const imgString = `<img src="${pageContext.request.contextPath }\${data.imagePath}">`;
+					//img요소를 표현하고 있는 문자열을 HTML형식으로 해석되도록 대입해줌 
+					document.querySelector("#imageWrapper").innerHTML = imgString;
+				})
+				
+			})
+		</script>
 	</div>
 </body>
 </html>
