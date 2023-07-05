@@ -10,9 +10,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-		<a href="${pageContext.request.contextPath }/file/upload_form">업로드 하기</a>
-		<h3>자료실 목록 보기</h3>
+	<div class="container mt-3">
+		<ul>
+			<li><a href="${pageContext.request.contextPath}/">인덱스 페이지 </a></li>
+			<li><a href="${pageContext.request.contextPath }/file/upload_form">업로드 하기</a></li>
+		</ul>
+		<h3>♡자료실 목록♡</h3>
 		<table class="table table-striped">
 			<thead class="table-dark">
 				<tr>

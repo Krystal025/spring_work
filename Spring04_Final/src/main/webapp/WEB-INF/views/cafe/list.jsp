@@ -12,7 +12,10 @@
 </head>
 <body>
 	<div class="container mt-3">
-		<a href="${pageContext.request.contextPath }/cafe/insertform">새글 작성</a>
+		<ul>
+			<li><a href="${pageContext.request.contextPath}/">인덱스 페이지 </a></li>
+			<li><a href="${pageContext.request.contextPath }/cafe/insertform">새글 작성</a></li>
+		</ul>
 		<h3>♡카페 글 목록♡</h3>
 		<table class="table table-striped">
 			<thead class="table-dark">

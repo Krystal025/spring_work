@@ -1,11 +1,15 @@
 package com.my.spring04.cafe.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.my.spring04.cafe.dto.CafeCommentDto;
@@ -18,19 +22,26 @@ public class CafeController {
 	@Autowired
 	private CafeService service;
 		
-		//댓글 삭제 요청처리
-		@RequestMapping("/cafe/comment_delete")
-		public String commentDelete(HttpServletRequest request, int ref_group) {
-			service.deleteComment(request);
-			return "redirect:/cafe/detail?num="+ref_group;
-		}
-		
 		//댓글 수정 요청처리
 		@RequestMapping("/cafe/comment_update")
-		public String commentUpdate(HttpServletRequest request, CafeCommentDto dto, int ref_group) {
-			service.getData(request);
+		@ResponseBody
+		public Map<String, Object> commentUpdate(CafeCommentDto dto) {
 			service.updateComment(dto);
-			return "redirect:/cafe/detail?num="+ref_group;
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("isSuccess", true);
+			// ("isSuccess", true)형식의 JSON 문자열이 응답되도록 함 
+			return map;
+		}
+		
+		//댓글 삭제 요청처리
+		@RequestMapping("/cafe/comment_delete")
+		@ResponseBody
+		public Map<String, Object> commentDelete(HttpServletRequest request) {
+			service.deleteComment(request);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("isSuccess", true);
+			// ("isSuccess", true)형식의 JSON 문자열이 응답되도록 함 
+			return map;
 		}
 	
 		//댓글 더보기 요청 처리

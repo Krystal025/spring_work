@@ -265,7 +265,16 @@ public class CafeServiceImpl implements CafeService{
 
 	@Override
 	public void deleteComment(HttpServletRequest request) {
-		
+		int num = Integer.parseInt(request.getParameter("num"));
+		//삭제할 댓글정보를 읽어옴
+		CafeCommentDto dto = cafeCommentDao.getData(num);
+		String id = (String)request.getSession().getAttribute("id");
+		//글 작성자와 로그인된 아이디가 일치하지 않을 경우
+		if(!dto.getWriter().equals(id)) {
+			throw new NotDeleteException("작성자 외 댓글 삭제 불가");
+		}
+		// dao를 이용해서 DB에서 삭제 
+		cafeCommentDao.delete(num);
 	}
 
 	@Override
@@ -282,9 +291,9 @@ public class CafeServiceImpl implements CafeService{
 		//ajax요청 파라미터로 넘어오는 원글의 글번호를 읽어냄
 		int num = Integer.parseInt(request.getParameter("num"));
 		
-	      /*
-        [ 댓글 페이징 처리에 관련된 로직 ]
-     */
+		
+	/*[ 댓글 페이징 처리에 관련된 로직 ]*/
+		
      //한 페이지에 몇개씩 표시할 것인지
      final int PAGE_ROW_COUNT=10;
 
