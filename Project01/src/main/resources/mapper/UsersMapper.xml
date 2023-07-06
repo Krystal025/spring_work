@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="members">
+<mapper namespace="users">
 	
 	<insert id="insert" parameterType="usersDto">
-		INSERT INTO users
+		INSERT INTO fit_users
 		(id, pwd, email, regdate)
 		VALUES(#{id}, #{pwd}, #{email}, SYSDATE)
 	</insert>
 	
 	<select id="getData" parameterType="string" resultType="usersDto">
 		SELECT id, pwd, email, profile, regdate
-		FROM users
+		FROM fit_users
 		WHERE id = #{id}
 	</select>
 	
 	<update id="updatePwd" parameterType="usersDto">
-		UPDATE users
+		UPDATE fit_users
 		SET pwd = #{newPwd}
 		WHERE id = #{id}
 	</update>
 	
 	<update id="update" parameterType="usersDto">
-		UPDATE users
+		UPDATE fit_users
 		SET email = #{email}, profile = #{profile}
 		WHERE id = #{id}
 	</update>
 	
 	<delete id="delete" parameterType="string">
-		DELETE FROM users
+		DELETE FROM fit_users
 		WHERE id = #{id}
 	</delete>
 </mapper>

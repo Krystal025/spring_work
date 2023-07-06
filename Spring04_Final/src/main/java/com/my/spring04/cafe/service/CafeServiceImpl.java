@@ -210,7 +210,7 @@ public class CafeServiceImpl implements CafeService{
 		CafeDto dto = cafeDao.getData(num);
 		//예외를 발생시켜 삭제가 안되도록 함 
 		if(!id.equals(dto.getWriter())) {
-			throw new NotDeleteException("남의 글 지우지 말기!");
+			throw new NotDeleteException("작성자 외 삭제 불가");
 		}
 		//일치하면 글 삭제하기 
 		cafeDao.delete(num);
@@ -271,7 +271,7 @@ public class CafeServiceImpl implements CafeService{
 		String id = (String)request.getSession().getAttribute("id");
 		//글 작성자와 로그인된 아이디가 일치하지 않을 경우
 		if(!dto.getWriter().equals(id)) {
-			throw new NotDeleteException("작성자 외 댓글 삭제 불가");
+			throw new NotDeleteException("작성자 외 삭제 불가");
 		}
 		// dao를 이용해서 DB에서 삭제 
 		cafeCommentDao.delete(num);

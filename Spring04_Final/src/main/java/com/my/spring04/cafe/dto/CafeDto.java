@@ -28,9 +28,7 @@ public class CafeDto {
 		this.prevNum = prevNum;
 		this.nextNum = nextNum;
 	}
-
-
-
+	
 	public int getNum() {
 		return num;
 	}

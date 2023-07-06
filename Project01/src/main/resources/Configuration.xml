@@ -3,5 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- 자주 사용하는 type의 별칭을 등록해놓고 Mapper.xml에서 사용할 수 있음 -->
+	<typeAliases>
+		<typeAlias type="com.my.project01.dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.my.project01.dto.GuestDto" alias="guestDto"/>
+		<typeAlias type="com.my.project01.dto.CafeDto" alias="cafeDto"/>
+		<typeAlias type="com.my.project01.dto.CafeCommentDto" alias="cafeCommentDto"/>
+		<typeAlias type="com.my.project01.dto.GalleryDto" alias="galleryDto"/>
+	</typeAliases>
 	
+	<!-- sql문을 작성한 Mapper.xml 문서가 어디있는지 목록을 작성해야함 -->
+	<mappers>
+		<mapper resource="mapper/UsersMapper.xml" />
+		<mapper resource="mapper/GuestMapper.xml" />
+		<mapper resource="mapper/CafeMapper.xml" />
+		<mapper resource="mapper/CafeCommentMapper.xml" />
+		<mapper resource="mapper/GalleryMapper.xml" />
+	</mappers>
 </configuration>

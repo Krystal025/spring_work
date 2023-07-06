@@ -118,12 +118,13 @@ public class UsersController {
 		return "users/loginform";
 	}
 	
-	//회원가입 요청처리
+	//회원가입 폼 요청처리
 	@RequestMapping(method = RequestMethod.GET, value = "/users/signup_form")
 	public String signupForm() {
 		return "users/signup_form";
 	}
 	
+	//회원가입 요청처리 
 	@RequestMapping(method = RequestMethod.POST, value = "/users/signup")
 	public ModelAndView signup(ModelAndView mView, UsersDto dto) {
 		//서비스를 이용해서 DB에 저장하고

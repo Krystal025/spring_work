@@ -6,32 +6,57 @@
 <head>
 <meta charset="UTF-8">
 <title>/home.jsp</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<div class="container">
-		<c:choose>
-			<c:when test="${empty sessionScope.id }">
-				<a href="${pageContext.request.contextPath }/users/loginform">로그인</a>
-				<a href="${pageContext.request.contextPath }/users/signup_form">회원가입</a>
-			</c:when>
-			<c:otherwise>
-				<a href="${pageContext.request.contextPath }/users/info">${id }</a>님 로그인 중...
-				<a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>				
-			</c:otherwise>
-		</c:choose>
+	<!-- navbar -->
+	<jsp:include page="/WEB-INF/views/include/navbar.jsp">
+		<jsp:param value="home" name="current"/>
+	</jsp:include>
+	<!-- header영역 & 로그인 창 -->
+	<div class="row container mt-3">
+		<div class="col-9">
+			<img src="" alt="" />
+		</div>
+		<div class="col-3">
+			<c:choose>
+				<c:when test="${empty sessionScope.id }">
+					<form action="${pageContext.request.contextPath}/users/login" method="post">
+						<c:choose>
+							<c:when test="${ empty param.url }">
+								<input type="hidden" name="url" value="${pageContext.request.contextPath}/"/>
+							</c:when>
+							<c:otherwise>
+								<input type="hidden" name="url" value="${param.url }"/>
+							</c:otherwise>
+						</c:choose>
+						<div>
+							<label class="control-label" for="id">아이디</label>
+							<input class="form-control" type="text" name="id" id="id"/>
+						</div>
+						<div>
+							<label class="control-label" for="pwd">비밀번호</label>
+							<input class="form-control" type="password" name="pwd" id="pwd"/>
+						</div>
+						<button class="btn btn-primary" type="submit">로그인</button>
+						<button class="btn btn-primary" type="button" onclick="location.href='${pageContext.request.contextPath }/users/signup_form'">회원가입</button>
+					</form>
+				</c:when>
+				<c:otherwise>
+					<a href="${pageContext.request.contextPath }/users/info">${id }</a>님 로그인 중...
+					<a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>				
+				</c:otherwise>
+			</c:choose>
+		</div>
+			
 		<h1>인덱스 페이지</h1>
 		<ul>
-			<li><a href="file/list">자료실 목록보기</a></li>
-			<li><a href="${pageContext.request.contextPath }/cafe/list">글 목록보기</a></li>
-			<li><a href="${pageContext.request.contextPath }/gallery/list">갤러리 목록보기</a></li>
+			<li><a href="${pageContext.request.contextPath }/cafe/list">게시판 (회원전용)</a></li>
+			<li><a href="${pageContext.request.contextPath }/gallery/list">갤러리</a></li>
+			<li><a href="${pageContext.request.contextPath }/guest/list">Q&A</a></li>
 		</ul>
-		
-		<h2>공지사항</h2>
-		<ul>
-			<c:forEach var="tmp" items="${requestScope.noticeList }">
-				<li>${tmp }</li>
-			</c:forEach>
-		</ul>
+
 	</div>
 </body>
 </html>

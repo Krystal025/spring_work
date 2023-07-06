@@ -25,7 +25,7 @@ public class GalleryController {
 	private GalleryService service;
 	
 	
-	@RequestMapping(method=RequestMethod.GET, value = "/gallery/ detail")
+	@RequestMapping(method=RequestMethod.GET, value = "/gallery/detail")
 	public ModelAndView detail(ModelAndView mView, int num) {
 		//갤러리  detail페이지에 필요한 데이터를 num으로 가져와, ModelAndView에 저장
 		service.getDetail(mView, num);

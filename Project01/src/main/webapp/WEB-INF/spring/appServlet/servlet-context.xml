@@ -37,6 +37,51 @@
 	
 	<context:component-scan base-package="com.my.project01" />
 	
+	<!-- 로그인 인터셉터를 bean 으로 만들고  -->
+   <beans:bean id="loginInterceptor" class="com.my.project01.interceptor.LoginInterceptor"/>
+   <!-- 인터셉터 맵핑하기 -->
+   <interceptors>
+      <interceptor>
+         <mapping path="/users/*"/>
+         <exclude-mapping path="/users/signup_form"/>
+         <exclude-mapping path="/users/signup"/>
+         <exclude-mapping path="/users/loginform"/>
+         <exclude-mapping path="/users/login"/>
+         <beans:ref bean="loginInterceptor"/>
+      </interceptor>
+      <interceptor>
+         <mapping path="/cafe/*"/>
+         <exclude-mapping path="/cafe/list"/>
+         <exclude-mapping path="/cafe/detail"/>
+         <exclude-mapping path="/cafe/ajax_comment_list"/>
+         <beans:ref bean="loginInterceptor"/>
+      </interceptor>
+      <interceptor>
+         <mapping path="/gallery/*"/>
+         <exclude-mapping path="/gallery/list"/>
+         <exclude-mapping path="/gallery/detail"/>	
+         <beans:ref bean="loginInterceptor"/>
+      </interceptor>
+   </interceptors>
+   <!--
+   		**파일 업로드**
+   		
+   		Multipart 폼 전송 처리를 위한 bean 설정 
+      	최대 업로드 사이즈 제한하기 
+      	name="maxUploadSize"  value="byte 단위" 
+   -->
+   <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	 	<beans:property name="maxUploadSize" value="102400000"></beans:property>
+	</beans:bean>
+		
+	<!-- 
+		bean의 이름을 이용해서 view로 이동할 수 있도록 설정
+		setOrder(0)은 0순위로 찾아가겠다는 의미
+		0순위로 찬아서 없으면 view 폴더 안에서 jsp 페이지를 찾게됨  
+		 -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0"></beans:property>
+	</beans:bean>	
 	
 	
 </beans:beans>

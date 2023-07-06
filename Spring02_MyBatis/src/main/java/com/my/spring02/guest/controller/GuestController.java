@@ -1,17 +1,11 @@
 package com.my.spring02.guest.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.my.spring02.guest.dao.GuestDao;
 import com.my.spring02.guest.dto.GuestDto;
 import com.my.spring02.guest.service.GuestService;
 
