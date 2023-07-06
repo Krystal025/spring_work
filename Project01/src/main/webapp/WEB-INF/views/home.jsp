@@ -8,6 +8,12 @@
 <title>/home.jsp</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery 로딩 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- 플러그인 CSS 로딩 -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<!-- 플러그인 JS로딩 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 </head>
 <body>
 	<!-- navbar -->
@@ -16,8 +22,15 @@
 	</jsp:include>
 	<!-- header영역 & 로그인 창 -->
 	<div class="row container mt-3">
-		<div class="col-9">
-			<img src="" alt="" />
+		<div class="col-9 fotorama">
+			<img src="${pageContext.request.contextPath }/resources/images/bg_01.jpg" alt="bgImg_1" />
+			<img src="${pageContext.request.contextPath }/resources/images/bg_02.jpg" alt="bgImg_2" />
+			<img src="${pageContext.request.contextPath }/resources/images/bg_03.jpg" alt="bgImg_3" />
+			<img src="${pageContext.request.contextPath }/resources/images/bg_04.jpg" alt="bgImg_4" />
+			<img src="${pageContext.request.contextPath }/resources/images/bg_05.jpg" alt="bgImg_5" />
+			<img src="${pageContext.request.contextPath }/resources/images/bg_06.jpg" alt="bgImg_6" />
+			<img src="${pageContext.request.contextPath }/resources/images/bg_07.jpg" alt="bgImg_7" />
+			<img src="${pageContext.request.contextPath }/resources/images/bg_08.jpg" alt="bgImg_8" />
 		</div>
 		<div class="col-3">
 			<c:choose>
