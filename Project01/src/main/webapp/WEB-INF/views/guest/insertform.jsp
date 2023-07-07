@@ -13,6 +13,10 @@
 		<h1>글 작성란</h1>
 		<form action="${pageContext.request.contextPath }/guest/insert" method="post">
 			<div class="mb-2">
+				<label class="form-label" for="title">제목</label>
+				<input class="form-control" type="text" name="title" id="title" />
+			</div>
+			<div class="mb-2">
 				<label class="form-label" for="writer">작성자</label>
 				<input class="form-control" type="text" name="writer" id="writer" />
 			</div>

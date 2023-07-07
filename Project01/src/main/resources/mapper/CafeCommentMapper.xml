@@ -10,7 +10,7 @@
       FROM
          (SELECT result1.*, ROWNUM AS rnum
          FROM
-            (SELECT num, writer, content, target_id, ref_group,
+            (SELECT num, writer, content, pwd, target_id, ref_group,
                comment_group, deleted, fit_cafe_comment.regdate, profile
             FROM fit_cafe_comment
             INNER JOIN users
@@ -28,8 +28,8 @@
    <!-- 댓글을 저장할때 댓글의 글번호도 미리 CafeCommentDto 객체에 담아와야 한다. -->
    <insert id="insert" parameterType="cafeCommentDto">
       INSERT INTO fit_cafe_comment
-      (num, writer, content, target_id, ref_group, comment_group, regdate)
-      VALUES(#{num}, #{writer}, #{content}, #{target_id}, #{ref_group},
+      (num, writer, content, pwd, target_id, ref_group, comment_group, regdate)
+      VALUES(#{num}, #{writer}, #{content}, #{pwd}, #{target_id}, #{ref_group},
          #{comment_group}, SYSDATE)
    </insert>
    <!-- 저장 예정인 댓글의 글번호를 미리 얻어내기  -->
@@ -43,7 +43,7 @@
       WHERE num=#{num}
    </update>
    <select id="getData" parameterType="int" resultType="cafeCommentDto">
-      SELECT num,writer,content,ref_group,comment_group,deleted,regdate
+      SELECT num,writer,content,pwd,ref_group,comment_group,deleted,regdate
       FROM fit_cafe_comment
       WHERE num=#{num}
    </select>

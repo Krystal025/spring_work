@@ -10,11 +10,12 @@ CREATE SEQUENCE fit_users_seq;
 
 --방문자 정보(방명록)를 저장할 테이블 
 CREATE TABLE fit_guest(
-	num NUMBER PRIMARY KEY,
-	writer VARCHAR2(100) NOT NULL,
-	content CLOB,
-	pwd VARCHAR2(100) NOT NULL,
-	regdate DATE
+    num NUMBER PRIMARY KEY,
+    writer VARCHAR2(100) NOT NULL,
+    title VARCHAR2(100) NOT NULL, --제목
+    content CLOB,
+    pwd VARCHAR2(100) NOT NULL,
+    regdate DATE
 );
 CREATE SEQUENCE fit_guest_seq; 
 
@@ -24,6 +25,7 @@ CREATE TABLE fit_cafe(
     writer VARCHAR2(100) NOT NULL, --작성자 (로그인된 아이디)
     title VARCHAR2(100) NOT NULL, --제목
     content CLOB, --글 내용
+    pwd VARCHAR2(100) NOT NULL,
     viewCount NUMBER, -- 조회수
     regdate DATE --글 작성일
 );

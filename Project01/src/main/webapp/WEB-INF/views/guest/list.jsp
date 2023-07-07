@@ -14,7 +14,7 @@
 		<jsp:param value="guest" name="current"/>
 	</jsp:include>
 	<div class="container mt-5">
-		<h1>방명록</h1>
+		<h1>Q&A</h1>
 		<div class="text-end">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 				fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
@@ -30,10 +30,8 @@
 				<tr>
 					<th>번호</th>
 					<th>작성자</th>
+					<th>제목</th>
 					<th>작성일</th>
-					<th>내용</th>
-					<th>수정</th>
-					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -41,17 +39,8 @@
 					<tr>
 						<td>${tmp.num }</td>
 						<td>${tmp.writer }</td>
+						<td>${tmp.title }</td>
 						<td>${tmp.regdate }</td>
-						<td><textarea class="form-control" rows="4" readonly>${tmp.content }</textarea></td>
-						<td><a
-							href="${pageContext.request.contextPath }/guest/updateform?num=${tmp.num}">수정</a></td>
-						<td>
-							<form action="delete" method="post">
-								<input type="hidden" name="num" value="${tmp.num }" /> 
-								<input type="password" name="pwd" placeholder="Password"  class="form-control"/>
-								<button class="btn btn-outline-danger" type="submit">삭제</button>
-							</form> 
-						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

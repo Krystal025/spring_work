@@ -3,20 +3,20 @@
 <mapper namespace="guest">
 		
 	<select id="getList" resultType="guestDto">
-		SELECT 	num, writer, content, pwd, regdate
+		SELECT 	num, writer, title, content, pwd, regdate
 		FROM fit_guest
 		ORDER BY num ASC
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="guestDto">
-		SELECT num, writer, content, pwd, regdate
+		SELECT num, writer, title, content, pwd, TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
 		FROM fit_guest 
 		WHERE num=#{num}
 	</select>
 	
 	<update id="update" parameterType="guestDto">
 		UPDATE fit_guest
-		SET writer=#{writer}, content=#{content}
+		SET writer=#{writer}, content=#{content}, title=#{title}
 		WHERE num=#{num} AND pwd=#{pwd}
 	</update>
 	
@@ -27,8 +27,8 @@
 	
 	<insert id="insert" parameterType="guestDto">
 		INSERT INTO fit_guest
-		(num, writer, pwd, content, regdate)
-		VALUES(member_seq.NEXTVAL, #{writer}, #{pwd}, #{content}, SYSDATE)
+		(num, writer, pwd, title, content, regdate)
+		VALUES(member_seq.NEXTVAL, #{writer}, #{pwd}, #{title}, #{content}, SYSDATE)
 	</insert>
 	
 </mapper>

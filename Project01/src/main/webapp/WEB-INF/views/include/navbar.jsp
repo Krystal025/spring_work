@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 어두운 계열의 navbar 라면 data-bs-theme="dark"로 지정 
 		navbar-expand-md : md영역에서 navbar-collapse가 펼쳐지도록 함 -->
-<nav class="navbar navbar-expand-md bg-body-tertiary" style="background-color: #030000"
+<nav class="navbar navbar-expand-sm bg-body-tertiary" style="background-color: #030000"
 	data-bs-theme="dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">
@@ -16,21 +16,19 @@
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a class="nav-link ${param.current eq 'cafe' ? 'active' : '' }" href="${pageContext.request.contextPath}/cafe/list">게시판</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link ${param.current eq 'gallery' ? 'active' : '' }" href="${pageContext.request.contextPath}/gallery/list">갤러리</a>
 				</li>	
 				<li class="nav-item">
-					<a class="nav-link ${param.current eq 'guest' ? 'active' : '' }" href="${pageContext.request.contextPath}/guest/list">Q&A</a>	
-				</li>	
-
-					
+					<a class="nav-link ${param.current eq 'guest' ? 'active' : '' }" href="${pageContext.request.contextPath}/guest/list">XXX</a>	
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ${param.current eq 'cafe' ? 'active' : '' }" href="${pageContext.request.contextPath}/cafe/list">Q&A</a>
+				</li>		
 			</ul>
 			<div class="navbar-nav">
 			<c:choose>
 				<c:when test="${not empty id }">
-					<a class="nav-link" href="${pageContext.request.contextPath}/users/private/info"><strong>${id }</strong></a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/users/info"><strong>${id }</strong>님</a>
 					<a class="nav-link" href="${pageContext.request.contextPath}/users/logout">로그아웃</a>
 				</c:when>
 				<c:otherwise>

@@ -20,11 +20,11 @@
 			<li><a href="${pageContext.request.contextPath}/">인덱스 페이지 </a></li>
 			<li><a href="${pageContext.request.contextPath }/cafe/insertform">새글 작성</a></li>
 		</ul>
-		<h3>♡카페 글 목록♡</h3>
+		<h3>질문게시판</h3>
 		<table class="table table-striped">
 			<thead class="table-dark">
 				<tr>
-					<th>글번호</th>
+					<th>번호</th>
 					<th>작성자</th>
 					<th>제목</th>
 					<th>조회수</th>
@@ -45,6 +45,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+
 		<nav>
 			<ul class="pagination">
 				<%--

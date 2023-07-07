@@ -5,6 +5,7 @@ public class CafeDto {
 	private String writer;
 	private String title;
 	private String content;
+	private String pwd;
 	private int viewCount;
 	private String regdate;
 	private int startRowNum;
@@ -13,14 +14,15 @@ public class CafeDto {
 	private int nextNum; // 다음글의 글번호
 
 	public CafeDto() {}
-	
-	public CafeDto(int num, String writer, String title, String content, int viewCount, String regdate, int startRowNum,
-			int endRowNum, int prevNum, int nextNum) {
+
+	public CafeDto(int num, String writer, String title, String content, String pwd, int viewCount, String regdate,
+			int startRowNum, int endRowNum, int prevNum, int nextNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
 		this.title = title;
 		this.content = content;
+		this.pwd = pwd;
 		this.viewCount = viewCount;
 		this.regdate = regdate;
 		this.startRowNum = startRowNum;
@@ -28,7 +30,7 @@ public class CafeDto {
 		this.prevNum = prevNum;
 		this.nextNum = nextNum;
 	}
-	
+
 	public int getNum() {
 		return num;
 	}
@@ -59,6 +61,14 @@ public class CafeDto {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public int getViewCount() {
@@ -108,5 +118,6 @@ public class CafeDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
-
+	
+	
 }

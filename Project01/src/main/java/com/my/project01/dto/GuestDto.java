@@ -3,16 +3,18 @@ package com.my.project01.dto;
 public class GuestDto {
 	private int num;
 	private String writer;
+	private String title;
 	private String content;
 	private String pwd;
 	private String regdate;
 	
 	public GuestDto() {}
 
-	public GuestDto(int num, String writer, String content, String pwd, String regdate) {
+	public GuestDto(int num, String writer, String title, String content, String pwd, String regdate) {
 		super();
 		this.num = num;
 		this.writer = writer;
+		this.title = title;
 		this.content = content;
 		this.pwd = pwd;
 		this.regdate = regdate;
@@ -32,6 +34,14 @@ public class GuestDto {
 
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getContent() {
@@ -57,5 +67,6 @@ public class GuestDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
 	
 }

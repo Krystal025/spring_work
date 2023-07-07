@@ -16,45 +16,89 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 </head>
 <body>
+<style>
+.main{
+	width: 100%;
+	margin: auto
+}
+.main h2, .main p{
+	text-align: center;
+	
+}
+</style>
 	<!-- navbar -->
 	<jsp:include page="/WEB-INF/views/include/navbar.jsp">
 		<jsp:param value="home" name="current"/>
 	</jsp:include>
+	
+	<!-- Carousel 영역 -->
+	<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="${pageContext.request.contextPath }/resources/images/bg_01.jpg" 
+					class="d-block w-100" alt="bgImg_1" />
+				<div class="carousel-caption text-start">
+        			<h1>First slide label</h1>
+        			<p>Some representative placeholder content for the first slide.</p>
+        			<a class="btn btn-primary" href="${pageContext.request.contextPath }/users/loginform">LogIn</a>
+         			<!--
+         				JS로 처리하는 방법 
+         				<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath }/users/signup_form'">Sign Up</button>
+         			  -->
+      			</div>
+			</div>
+			<div class="carousel-item">
+				<img src="${pageContext.request.contextPath }/resources/images/bg_02.jpg" 
+					class="d-block w-100" alt="bgImg_2" />
+				<div class="carousel-caption">
+        			<h3>First slide label</h3>
+        			<p>Some representative placeholder content for the first slide.</p>
+        			<p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+      			</div>
+			</div>
+			<div class="carousel-item">
+				<img src="${pageContext.request.contextPath }/resources/images/bg_05.jpg" 
+					class="d-block w-100" alt="bgImg_5" />
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    		<span class="visually-hidden">Previous</span>
+  		</button>
+  		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    		<span class="visually-hidden">Next</span>
+  		</button>
+	</div>
+	
+	<!-- Carousel영역 아래 링크 3가지 -->
+    <div class="container marketing mt-5">
+	    <div class="row main">
+		      <div class="col-lg-4 mb-5">
+		        <h2 class="fw-normal">Board</h2>
+		        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+		        <p><a class="btn btn-outline-dark" href="${pageContext.request.contextPath }/gallery/list">자유게시판 &raquo;</a></p>
+		      </div>
+		      <div class="col-lg-4 mb-5">
+		        <h2 class="fw-normal">Guest</h2>
+		        <p>And lastly this, the third column of representative placeholder content.</p>
+		        <p><a class="btn btn-outline-dark" href="${pageContext.request.contextPath }/guest/list">XXX &raquo;</a></p>
+			</div>
+			<div class="col-lg-4 mb-5">
+		        <h2 class="fw-normal">Q&A</h2>
+		        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+		        <p><a class="btn btn-outline-dark" href="${pageContext.request.contextPath }/cafe/list">질문게시판 &raquo;</a></p>
+		      </div>
+	    </div>
+	</div>
+	
 	<!-- header영역 & 로그인 창 -->
 	<div class="row container mt-3">
-		<div class="col-9 fotorama">
-			<img src="${pageContext.request.contextPath }/resources/images/bg_01.jpg" alt="bgImg_1" />
-			<img src="${pageContext.request.contextPath }/resources/images/bg_02.jpg" alt="bgImg_2" />
-			<img src="${pageContext.request.contextPath }/resources/images/bg_03.jpg" alt="bgImg_3" />
-			<img src="${pageContext.request.contextPath }/resources/images/bg_04.jpg" alt="bgImg_4" />
-			<img src="${pageContext.request.contextPath }/resources/images/bg_05.jpg" alt="bgImg_5" />
-			<img src="${pageContext.request.contextPath }/resources/images/bg_06.jpg" alt="bgImg_6" />
-			<img src="${pageContext.request.contextPath }/resources/images/bg_07.jpg" alt="bgImg_7" />
-			<img src="${pageContext.request.contextPath }/resources/images/bg_08.jpg" alt="bgImg_8" />
-		</div>
 		<div class="col-3">
 			<c:choose>
 				<c:when test="${empty sessionScope.id }">
-					<form action="${pageContext.request.contextPath}/users/login" method="post">
-						<c:choose>
-							<c:when test="${ empty param.url }">
-								<input type="hidden" name="url" value="${pageContext.request.contextPath}/"/>
-							</c:when>
-							<c:otherwise>
-								<input type="hidden" name="url" value="${param.url }"/>
-							</c:otherwise>
-						</c:choose>
-						<div>
-							<label class="control-label" for="id">아이디</label>
-							<input class="form-control" type="text" name="id" id="id"/>
-						</div>
-						<div>
-							<label class="control-label" for="pwd">비밀번호</label>
-							<input class="form-control" type="password" name="pwd" id="pwd"/>
-						</div>
-						<button class="btn btn-primary" type="submit">로그인</button>
-						<button class="btn btn-primary" type="button" onclick="location.href='${pageContext.request.contextPath }/users/signup_form'">회원가입</button>
-					</form>
+					<a href="${pageContext.request.contextPath }/users/loginform">로그인</a>
+					<a href="${pageContext.request.contextPath }/users/signup_form">회원가입</a>				
 				</c:when>
 				<c:otherwise>
 					<a href="${pageContext.request.contextPath }/users/info">${id }</a>님 로그인 중...
@@ -62,14 +106,6 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-			
-		<h1>인덱스 페이지</h1>
-		<ul>
-			<li><a href="${pageContext.request.contextPath }/cafe/list">게시판 (회원전용)</a></li>
-			<li><a href="${pageContext.request.contextPath }/gallery/list">갤러리</a></li>
-			<li><a href="${pageContext.request.contextPath }/guest/list">Q&A</a></li>
-		</ul>
-
 	</div>
 </body>
 </html>

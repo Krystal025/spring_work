@@ -21,7 +21,7 @@
       FROM
          (SELECT result1.*, ROWNUM AS rnum
          FROM
-            (SELECT num,writer,title,content,viewCount,regdate
+            (SELECT num,writer,title,content,pwd,viewCount,regdate
             FROM fit_cafe
             <include refid="searchCondition"/>
             ORDER BY num DESC) result1)
@@ -38,14 +38,14 @@
 
    <insert id="insert" parameterType="cafeDto">
       INSERT INTO fit_cafe
-      (num,writer,title,content,viewCount,regdate)
-      VALUES(fit_cafe_seq.NEXTVAL, #{writer}, #{title},#{content}, #{viewCount}, SYSDATE)
+      (num,writer,title,content,pwd,viewCount,regdate)
+      VALUES(fit_cafe_seq.NEXTVAL, #{writer}, #{title},#{content},#{pwd}, #{viewCount}, SYSDATE)
    </insert>
    
    <select id="getData" parameterType="int" resultType="cafeDto">
       SELECT result1.*
       FROM
-         (SELECT num,writer,title,content,viewCount,TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
+         (SELECT num,writer,title,content,pwd,viewCount,TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
             LAG(num, 1, 0) OVER (ORDER BY num DESC) nextNum,
                LEAD(num, 1, 0) OVER (ORDER BY num DESC) prevNum
           FROM fit_cafe) result1
@@ -55,7 +55,7 @@
    <select id="getData2" parameterType="cafeDto" resultType="cafeDto">
       SELECT result1.*
       FROM
-         (SELECT num,writer,title,content,viewCount,TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
+         (SELECT num,writer,title,content,pwd,viewCount,TO_CHAR(regdate, 'YY.MM.DD') AS regdate,
             LAG(num, 1, 0) OVER (ORDER BY num DESC) nextNum,
                LEAD(num, 1, 0) OVER (ORDER BY num DESC) prevNum
           FROM fit_cafe

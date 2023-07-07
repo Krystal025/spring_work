@@ -100,8 +100,10 @@
 </head>
 </head>
 <body>
-   <div class="container">
-      
+	<jsp:include page="/WEB-INF/views/include/navbar.jsp">
+		<jsp:param value="cafe" name="current"/>
+	</jsp:include>
+   <div class="container mt-5">
       <%-- 만일 이전글(더 옛날글)의 글번호가 0 가 아니라면(이전글이 존재 한다면) --%>
       <c:if test="${dto.prevNum ne 0}">
          <a href="detail?num=${dto.prevNum }&condition=${condition}&keyword=${encodedK}">이전글</a>
@@ -170,6 +172,11 @@
 		<input type="hidden" name="target_id" value="${dto.writer }"/>
 		<textarea name="content">${empty id ? '댓글 작성을 위해 로그인이 필요합니다' : '' }</textarea>
 		<button type="submit">등록</button>
+		<c:choose>
+			<c:when test="${empty sessionScope.id }">
+				<a href="${pageContext.request.contextPath }/users/loginform?url=${pageContext.request.contextPath }/cafe/detail?num=${dto.num}">로그인</a>
+			</c:when>
+		</c:choose>
       </form>
       	<!-- 댓글 목록 -->
       <div class="comments">
@@ -177,7 +184,7 @@
             <c:forEach var="tmp" items="${commentList }">
                <c:choose>
                   <c:when test="${tmp.deleted eq 'yes' }">
-                     <li>삭제된 댓글 입니다.</li>
+                     <li>삭제된 댓글 입니다</li>
                   </c:when>
                   <c:otherwise>
                      <c:if test="${tmp.num eq tmp.comment_group }">
@@ -202,7 +209,7 @@
                                  </c:if>
                                  <span>${tmp.writer }</span>
                                  <c:if test="${tmp.num ne tmp.comment_group }">
-                                    @<i>${tmp.target_id }</i>
+                                    <i>${tmp.target_id }</i>
                                  </c:if>
                                  <span>${tmp.regdate }</span>
                                  <a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
