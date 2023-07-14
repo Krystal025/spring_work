@@ -71,7 +71,6 @@
    </interceptors>
    <!--
    		**파일 업로드**
-   		
    		Multipart 폼 전송 처리를 위한 bean 설정 
       	최대 업로드 사이즈 제한하기 
       	name="maxUploadSize"  value="byte 단위" 

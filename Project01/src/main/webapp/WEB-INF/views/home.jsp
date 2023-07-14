@@ -91,21 +91,5 @@
 		      </div>
 	    </div>
 	</div>
-	
-	<!-- header영역 & 로그인 창 -->
-	<div class="row container mt-3">
-		<div class="col-3">
-			<c:choose>
-				<c:when test="${empty sessionScope.id }">
-					<a href="${pageContext.request.contextPath }/users/loginform">로그인</a>
-					<a href="${pageContext.request.contextPath }/users/signup_form">회원가입</a>				
-				</c:when>
-				<c:otherwise>
-					<a href="${pageContext.request.contextPath }/users/info">${id }</a>님 로그인 중...
-					<a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>				
-				</c:otherwise>
-			</c:choose>
-		</div>
-	</div>
 </body>
 </html>
