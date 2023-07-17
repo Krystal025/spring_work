@@ -1,8 +1,8 @@
-package com.example.boot06.file.dao;
+package com.example.boot07.file.dao;
 
 import java.util.List;
 
-import com.example.boot06.file.dto.FileDto;
+import com.example.boot07.file.dto.FileDto;
 
 public interface FileDao {
 	public void insert(FileDto dto);

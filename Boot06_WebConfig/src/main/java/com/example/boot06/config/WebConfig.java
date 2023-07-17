@@ -27,9 +27,8 @@ public class WebConfig implements WebMvcConfigurer	{
 		//메소드의 인자로 전달되는 InterceptorRegistry 객체를 이용해서 Interceptor를 등록하면 됨
 		
 		registry.addInterceptor(loginInter)
-			.addPathPatterns("/users/*", "/file/*")
-			.excludePathPatterns("/users/loginform", "/users/login")
-			.excludePathPatterns("/file/list", "/file/download");	
+			.addPathPatterns("/users/*")
+			.excludePathPatterns("/users/loginform", "/users/login");	
 	}
 	
 	@Override

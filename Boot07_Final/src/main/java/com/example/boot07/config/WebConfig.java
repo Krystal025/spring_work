@@ -28,9 +28,11 @@ public class WebConfig implements WebMvcConfigurer	{
 		//메소드의 인자로 전달되는 InterceptorRegistry 객체를 이용해서 Interceptor를 등록하면 됨
 		
 		registry.addInterceptor(loginInter)
-			.addPathPatterns("/users/*", "/cafe/*")
+			.addPathPatterns("/users/*", "/cafe/*", "/file/*", "/gallery/*")
 			.excludePathPatterns("/users/loginform", "/users/login", "/users/signup_form", "/users/signup")
-			.excludePathPatterns("/cafe/list", "/cafe/detail", "/cafe/ajax_comment_list");
+			.excludePathPatterns("/cafe/list", "/cafe/detail", "/cafe/ajax_comment_list")
+			.excludePathPatterns("/file/list", "/file/download")
+			.excludePathPatterns("/gallery/list", "/gallery/detail", "gallery/images/*");
 	}
 	
 	@Override

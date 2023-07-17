@@ -34,6 +34,13 @@
 			<li><a href="cafe/insertform">카페 글쓰기</a></li>
 			<li><a href="file/uploadform">파일 업로드</a></li>
 		</ul>
+		<h3>Lombok 테스트</h3>
+		<form action="member/insert" method="post">
+			<input type="text" name="num" placeholder="Number" />
+			<input type="text" name="name" placeholder="Name" />
+			<input type="text" name="addr" placeholder="Address" />
+			<button type="submit">Add</button>
+		</form>
 		<h3>공지사항</h3>
 		<ul>
 			<c:forEach var="tmp" items="${noticeList }">

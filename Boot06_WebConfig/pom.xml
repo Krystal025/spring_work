@@ -33,40 +33,28 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- 추가 라이브러리  -->
+		<!-- jsp 페이지 사용과 taglib 를 사용하기 위해 -->
 		<dependency>
-         <groupId>org.mybatis.spring.boot</groupId>
-         <artifactId>mybatis-spring-boot-starter-test</artifactId>
-         <version>2.3.1</version>
-         <scope>test</scope>
-      </dependency>
-	<!-- jsp 페이지 사용과 taglib 를 사용하기 위해 -->
-	<dependency>
-		<groupId>org.apache.tomcat.embed</groupId>
-		<artifactId>tomcat-embed-jasper</artifactId>
-		<scope>provided</scope>
-	</dependency>
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>jstl</artifactId>
-	</dependency>
-	<!-- MyBatis 라이브러리 -->
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.8</version>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.0</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
-	<!-- IOUtils 클래스를 사용하기 위한 라이브러리 -->
-        <dependency>
-         <groupId>commons-io</groupId>
-         <artifactId>commons-io</artifactId>
-         <version>2.4</version>
-     </dependency>
+		<!-- IOUtils 클래스를 사용하기 위한 라이브러리 -->
+	  	<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		
+		<!-- Lombok 라이브러리 추가 -->
+		<dependency>
+               <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+         </dependency>
 	</dependencies>
 
 	<build>

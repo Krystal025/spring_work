@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/cafe/list.jsp</title>
+<title>views/cafe/list.jsp</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -20,7 +20,7 @@
 			<li><a href="${pageContext.request.contextPath}/">인덱스 페이지 </a></li>
 			<li><a href="${pageContext.request.contextPath }/cafe/insertform">새글 작성</a></li>
 		</ul>
-		<h3>질문게시판</h3>
+		<h3>카페 게시판</h3>
 		<table class="table table-striped">
 			<thead class="table-dark">
 				<tr>

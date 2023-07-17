@@ -6,24 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>/home.jsp</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-		<c:choose>
-			<c:when test="${empty sessionScope.id }">
-				<a href="${pageContext.request.contextPath }/users/loginform">로그인</a>
-				<a href="${pageContext.request.contextPath }/users/signup_form">회원가입</a>
-			</c:when>
-			<c:otherwise>
-				<a href="${pageContext.request.contextPath }/users/info">${id }</a>님 로그인 중...
-				<a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>				
-			</c:otherwise>
-		</c:choose>
+	<jsp:include page="/WEB-INF/views/include/navbar.jsp">
+		<jsp:param value="cafe" name="current"/>
+	</jsp:include>
+	<div class="container mt-3">
 		<h1>인덱스 페이지</h1>
 		<ul>
-			<li><a href="file/list">자료실 목록보기</a></li>
-			<li><a href="${pageContext.request.contextPath }/cafe/list">글 목록보기</a></li>
-			<li><a href="${pageContext.request.contextPath }/gallery/list">갤러리 목록보기</a></li>
+			<li><a href="${pageContext.request.contextPath }/cafe/list">카페 글 목록</a></li>
+			<li><a href="${pageContext.request.contextPath }/file/list">자료실 목록</a></li>
+			<li><a href="${pageContext.request.contextPath }/gallery/list">갤러리 목록</a></li>
 		</ul>
 		
 		<h2>공지사항</h2>

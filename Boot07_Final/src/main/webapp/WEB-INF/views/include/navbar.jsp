@@ -16,14 +16,14 @@
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a class="nav-link ${param.current eq 'gallery' ? 'active' : '' }" href="${pageContext.request.contextPath}/gallery/list">갤러리</a>
+					<a class="nav-link ${param.current eq 'cafe' ? 'active' : '' }" href="${pageContext.request.contextPath}/cafe/list">카페</a>
 				</li>	
 				<li class="nav-item">
-					<a class="nav-link ${param.current eq 'guest' ? 'active' : '' }" href="${pageContext.request.contextPath}/guest/list">XXX</a>	
+					<a class="nav-link ${param.current eq 'file' ? 'active' : '' }" href="${pageContext.request.contextPath}/file/list">자료실</a>	
 				</li>
 				<li class="nav-item">
-					<a class="nav-link ${param.current eq 'cafe' ? 'active' : '' }" href="${pageContext.request.contextPath}/cafe/list">Q&A</a>
-				</li>		
+					<a class="nav-link ${param.current eq 'gallery' ? 'active' : '' }" href="${pageContext.request.contextPath}/gallery/list">갤러리</a>
+				</li>	
 			</ul>
 			<div class="navbar-nav">
 			<c:choose>
