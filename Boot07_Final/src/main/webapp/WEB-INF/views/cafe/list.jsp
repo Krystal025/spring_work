@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>views/cafe/list.jsp</title>
+<title>/views/cafe/list.jsp</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
@@ -20,11 +21,11 @@
 			<li><a href="${pageContext.request.contextPath}/">인덱스 페이지 </a></li>
 			<li><a href="${pageContext.request.contextPath }/cafe/insertform">새글 작성</a></li>
 		</ul>
-		<h3>카페 게시판</h3>
+		<h3>♡카페 글 목록♡</h3>
 		<table class="table table-striped">
 			<thead class="table-dark">
 				<tr>
-					<th>번호</th>
+					<th>글번호</th>
 					<th>작성자</th>
 					<th>제목</th>
 					<th>조회수</th>
@@ -45,7 +46,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-
 		<nav>
 			<ul class="pagination">
 				<%--
